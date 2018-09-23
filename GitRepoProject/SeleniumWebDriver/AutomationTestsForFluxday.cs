@@ -41,5 +41,47 @@ namespace AutomationTestsForFluxday
 
             Assert.IsTrue(fadeOutMessage.Contains("Signed in successfully."));
         }
+
+        [TestCategory("AdminsTests")]
+        [TestMethod]
+        public void Test002LogOutAsAnAdmin()
+        {
+            IWebElement emailField = driver.FindElement(By.Id("user_email"));
+            emailField.SendKeys("admin@fluxday.io");
+
+            IWebElement passwordField = driver.FindElement(By.Id("user_password"));
+            passwordField.SendKeys("password");
+
+            IWebElement loginButton = driver.FindElement(By.ClassName("btn-login"));
+            loginButton.Click();
+        }
+
+        [TestCategory("AdminsTests")]
+        [TestMethod]
+        public void Test003AddUserAsAnAdmin()
+        {
+
+        }
+
+        [TestCategory("AdminsTests")]
+        [TestMethod]
+        public void Test004DeleteUserAsAnAdmin()
+        {
+
+        }
+
+        [TestCategory("AdminsTests")]
+        [TestMethod]
+        public void Test005CreateDepartmentAsAnAdmin()
+        {
+
+        }
+
+        [TestCategory("AdminsTests")]
+        [TestMethod]
+        public void Test006AddNewTeamInDepartmentAsAnAdmin()
+        {
+
+        }
     }
 }
