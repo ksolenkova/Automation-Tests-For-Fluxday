@@ -46,15 +46,8 @@ namespace AutomationTestsForFluxday
         [TestMethod]
         public void Test002LogOutAsAnAdmin()
         {
-            IWebElement emailField = driver.FindElement(By.Id("user_email"));
-            emailField.SendKeys("admin@fluxday.io");
 
-            IWebElement passwordField = driver.FindElement(By.Id("user_password"));
-            passwordField.SendKeys("password");
-
-            IWebElement loginButton = driver.FindElement(By.ClassName("btn-login"));
-            loginButton.Click();
-        }
+        }   
 
         [TestCategory("AdminsTests")]
         [TestMethod]
