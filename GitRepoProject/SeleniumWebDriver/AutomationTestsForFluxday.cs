@@ -1,7 +1,6 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
-using OpenQA.Selenium.Support.UI;
 using System;
 using System.Threading;
 
@@ -18,38 +17,19 @@ namespace AutomationTestsForFluxday
             driver = new ChromeDriver();
             driver.Manage().Window.Maximize();
             driver.Navigate().GoToUrl("https://app.fluxday.io/users/sign_in");
+            LogInAsAdmin();
         }
 
         [TestCleanup]
         public void TestTeardown()
         {
-            //driver.Quit();
+            driver.Quit();
         }
 
         [TestCategory("AdminsTests")]
         [TestMethod]
-        public void Test001LogInAsAnAdmin()
+        public void Test001LogOutAsAnAdmin()
         {
-            var emailField = driver.FindElement(By.Id("user_email"));
-            emailField.SendKeys("admin@fluxday.io");
-
-            var passwordField = driver.FindElement(By.Id("user_password"));
-            passwordField.SendKeys("password");
-
-            var loginButton = driver.FindElement(By.ClassName("btn-login"));
-            loginButton.Click();
-
-            var fadeOutMessage = driver.FindElement(By.XPath("/html/body/div[2]/div[1]/div")).Text;
-
-            Assert.IsTrue(fadeOutMessage.Contains("Signed in successfully."));
-        }
-
-        [TestCategory("AdminsTests")]
-        [TestMethod]
-        public void Test002LogOutAsAnAdmin()
-        {
-            LogInAsAdmin();
-
             var logOut = driver.FindElement(By.XPath("/html/body/div[2]/div[1]/ul[3]/li[2]/a"));
             logOut.Click();
 
@@ -60,10 +40,8 @@ namespace AutomationTestsForFluxday
 
         [TestCategory("AdminsTests")]
         [TestMethod]
-        public void Test003AddUserAsAnAdmin()
+        public void Test002AddUserAsAnAdmin()
         {
-            LogInAsAdmin();
-
             var users = driver.FindElement(By.XPath("/html/body/div[2]/div[1]/ul[2]/li[5]/a"));
             users.Click();
 
@@ -85,10 +63,8 @@ namespace AutomationTestsForFluxday
 
         [TestCategory("AdminsTests")]
         [TestMethod]
-        public void Test004DeleteUserAsAnAdmin()
+        public void Test003DeleteUserAsAnAdmin()
         {
-            LogInAsAdmin();
-
             AddUser();
 
             var userToDelete = driver.FindElement(By.PartialLinkText("Employee John"));
@@ -110,10 +86,8 @@ namespace AutomationTestsForFluxday
 
         [TestCategory("AdminsTests")]
         [TestMethod]
-        public void Test005CreateDepartmentAsAnAdmin()
+        public void Test004CreateDepartmentAsAnAdmin()
         {
-            LogInAsAdmin();
-
             var departments = driver.FindElement(By.XPath("/html/body/div[2]/div[1]/ul[2]/li[3]/a"));
             departments.Click();
 
@@ -135,10 +109,8 @@ namespace AutomationTestsForFluxday
 
         [TestCategory("AdminsTests")]
         [TestMethod]
-        public void Test006AddNewTeamInDepartmentAsAnAdmin()
+        public void Test005AddNewTeamInDepartmentAsAnAdmin()
         {
-            LogInAsAdmin();
-
             var departments = driver.FindElement(By.XPath("/html/body/div[2]/div[1]/ul[2]/li[3]/a"));
             departments.Click();
 
@@ -177,7 +149,7 @@ namespace AutomationTestsForFluxday
         private void FillNewTeamForm()
         {
             Thread.Sleep(1000);
-            var teamName = driver.FindElement(By.Id("team_name"));
+            var teamName = driver.FindElement(By.CssSelector("#team_name"));
             teamName.SendKeys("Quality Assurance");
 
             var teamCode = driver.FindElement(By.Id("team_code"));
