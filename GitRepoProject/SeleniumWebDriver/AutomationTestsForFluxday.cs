@@ -23,6 +23,7 @@ namespace AutomationTestsForFluxday
         [TestCleanup]
         public void TestTeardown()
         {
+            Thread.Sleep(1000);
             driver.Quit();
         }
 
