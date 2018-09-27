@@ -5,7 +5,7 @@ namespace SeleniumWebDriver.Pages.UsersPage
 {
     public partial class UsersPage
     {
-        public IWebElement AddUser
+        public IWebElement AddUserLink
         {
             get
             {
@@ -117,6 +117,7 @@ namespace SeleniumWebDriver.Pages.UsersPage
         {
             get
             {
+                Wait.Until(ExpectedConditions.ElementExists(By.XPath("//*[@id=\"pane3\"]/div/div[1]/div[2]/a/div")));
                 return this.Driver.FindElement(By.XPath("//*[@id=\"pane3\"]/div/div[1]/div[2]/a/div"));
             }
         }
@@ -125,7 +126,7 @@ namespace SeleniumWebDriver.Pages.UsersPage
         {
             get
             {
-                Wait.Until(ExpectedConditions.ElementExists(By.XPath("//*[@id=\"drop1\"]/li[2]/a")));
+                //Wait.Until(ExpectedConditions.ElementExists(By.XPath("//*[@id=\"drop1\"]/li[2]/a")));
                 return this.Driver.FindElement(By.XPath("//*[@id=\"drop1\"]/li[2]/a"));
             }
         }

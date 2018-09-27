@@ -1,4 +1,5 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+using System.Threading;
 
 namespace SeleniumWebDriver.Pages.DepartmentsPage
 {
@@ -11,6 +12,7 @@ namespace SeleniumWebDriver.Pages.DepartmentsPage
 
         public static void AssertTheNewTeamIsDisplayed(this DepartmentsPage page)
         {
+            Thread.Sleep(1000);
             Assert.IsTrue(page.CreatedTeam.Displayed);
         }
     }

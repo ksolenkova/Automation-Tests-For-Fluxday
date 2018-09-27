@@ -26,5 +26,13 @@ namespace SeleniumWebDriver.Pages.LoginPage
             Type(this.PasswordField, user.UserPassword);
             this.LoginButton.Click();
         }
+
+        public void LogInAsAdmin()
+        {
+            User user = new User("admin@fluxday.io", "password");
+
+            NavigateTo();
+            LoginUser(user);
+        }
     }
 }
