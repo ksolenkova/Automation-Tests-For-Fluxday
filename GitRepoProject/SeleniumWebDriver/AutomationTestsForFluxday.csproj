@@ -61,12 +61,26 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
-    <Compile Include="AutomationTestsForFluxday.cs" />
+    <Compile Include="Models\User.cs" />
+    <Compile Include="Pages\BasePage.cs" />
+    <Compile Include="Pages\DashboardPage\DashboardPage.cs" />
+    <Compile Include="Pages\DashboardPage\DashboardPageMap.cs" />
+    <Compile Include="Pages\DepartmentsPage\DepartmentsPage.cs" />
+    <Compile Include="Pages\DepartmentsPage\DepartmentsPageAsserter.cs" />
+    <Compile Include="Pages\DepartmentsPage\DepartmentsPageMap.cs" />
+    <Compile Include="Pages\LoginPage\LoginPage.cs" />
+    <Compile Include="Pages\LoginPage\LoginPageAsserter.cs" />
+    <Compile Include="Pages\LoginPage\LoginPageMap.cs" />
+    <Compile Include="Pages\UsersPage\UsersPage.cs" />
+    <Compile Include="Pages\UsersPage\UsersPageAsserter.cs" />
+    <Compile Include="Pages\UsersPage\UsersPageMap.cs" />
+    <Compile Include="Tests\AutomationTestsForFluxday.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
+  <ItemGroup />
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">
       <ItemGroup>
